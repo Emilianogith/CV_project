@@ -44,3 +44,9 @@ Above operation will create a folder called `images` and save the extracted imag
 				...		
 ...
 ```
+
+## Train
+
+## Test
+
+
