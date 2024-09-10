@@ -1,4 +1,4 @@
-# CV_project
+# CV_project: Pedeestrian Intention Estimation on JAAD Dataset
 ## ABSTRACT
 
 Safe interaction between autonomous vehicles and pedestrians requires accurate estimation of pedestrian intention through visual information analysis. In this study, we explore recent approaches and open challenges in pedestrian intention estimation using computer vision. We provide an overview of techniques, including those based on convolutional neural networks, LSTM, and probabilistic models. Additionally, we investigate challenges related to varying environmental conditions and the presence of partially or fully occluded pedestrians. Furthermore, we propose optimization techniques to enhance the accuracy and reliability of pedestrian intention estimation systems, with a focus on multi-modal data fusion and contextual information integration for a deeper understanding of human behavior in road situations.
