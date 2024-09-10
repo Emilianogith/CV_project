@@ -20,9 +20,9 @@ However, unlike the original, our implementation omits the use of global context
 - Finally, after the fusion of visual and non-visual branches, a final attention mechanism is applied, and the extracted features are passed to a fully connected (FC) layer that delivers the final binary prediction.
 
 
-## How to run the code 
+# How to run the code 
 
-# Dataset Preparation  
+## Dataset Preparation  
 
 Download the [JAAD Annotation](https://github.com/ykotseruba/JAAD) and put `JAAD` file to this project's root directory (as `./JAAD`).  
 
