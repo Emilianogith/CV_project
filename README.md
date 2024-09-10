@@ -47,22 +47,22 @@ Above operation will create a folder called `images` and save the extracted imag
 
 ## Pose extraction
 Extract the pose and the organized dataset with the following command:
-'''
+```
 python pose_extraction.py
-'''
-This will create a file '.pickle' in the working directory containing the data used for training.
+```
+This will create a file `.pickle` in the working directory containing the data used for training.
 
 ## Train
 To train the model using the extracted dataset, execute:
-'''
+```
 python train.py
-'''
-Once training is complete, the files 'training_info.json' and 'model_weights.pth' will be generated in the './training_cache folder'. These files can be used to evaluate the model's performance.
+```
+Once training is complete, the files `training_info.json` and `model_weights.pth` will be generated in the `./training_cache folder`. These files can be used to evaluate the model's performance.
 
 ## Test
 Evaluate the model's performance on the test set using:
-'''
+```
 python test.py
-'''
+```
 It will generate a plot showing the Training and Validation Losses over the course of training, as well as a classification report that includes key evaluation metrics such as Precision, Recall, and F1-score.
 
