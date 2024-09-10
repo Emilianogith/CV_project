@@ -11,13 +11,13 @@ from jaad_data import JAAD
 
 """
 
-jaad = JAAD(data_path='/content/drive/MyDrive/CV_Project/JAAD')
+jaad = JAAD(data_path='/JAAD')
 
 # Initialize MediaPipe Pose model
 mp_pose = mp.solutions.pose
 pose_model = mp_pose.Pose(static_image_mode=True, min_detection_confidence=0.6)
 
-checkpoint_path = '/content/drive/MyDrive/CV_Project/definitive_pose_checkpoints'
+checkpoint_path = './definitive_pose_checkpoints'
 
 
 def generate_trajectories(data_train, annotations, start_idx=0, num_frames=16, prediction_frame_step=8 ):

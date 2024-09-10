@@ -28,7 +28,7 @@ print(f"Using the device: {device}")
 
 
 
-checkpoint_path = '/content/drive/MyDrive/CV_Project/definitive_pose_checkpoints'
+checkpoint_path = './definitive_pose_checkpoints'
 train_dataset, val_dataset, test_dataset = train_test_split(checkpoint_path)
 
 print('len of train dataset',train_dataset.__len__())
@@ -105,7 +105,7 @@ for epoch in range(num_epochs):
     val_accuracy = correct_predictions / len(val_dataset)
     print(f"Validation Loss: {avg_val_loss} | Validation accuracy: {val_accuracy}")
 
-torch.save(model.state_dict(), '/content/drive/MyDrive/CV_Project/training_info.json')
+torch.save(model.state_dict(), './training_info.json')
 
 # Save losses and epochs information
 training_info = {
@@ -114,7 +114,7 @@ training_info = {
     'val_losses': val_losses
 }
 
-with open('/content/drive/MyDrive/CV_Project/model_weights.pth', 'w') as f:
+with open('./model_weights.pth', 'w') as f:
     json.dump(training_info, f)
 
 

@@ -15,7 +15,7 @@ from model import HybridFusionNetwork
 """
 
 #Plot Training and Validation Losses during training
-with open('/content/drive/MyDrive/CV_Project/training_info.json', 'r') as f:
+with open('./training_info.json', 'r') as f:
     training_info = json.load(f)
 
 num_epochs = training_info['num_epochs']
@@ -30,7 +30,7 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 print(f"Using the device: {device}")
 
 
-checkpoint_path = '/content/drive/MyDrive/CV_Project/definitive_pose_checkpoints'
+checkpoint_path = './definitive_pose_checkpoints'
 train_dataset, val_dataset, test_dataset = train_test_split(checkpoint_path)
 
 batch_size=4
@@ -44,7 +44,7 @@ model = HybridFusionNetwork(visual_input_shape=(16, 3, 224, 224),
 criterion = nn.BCELoss()
 
 # test
-model.load_state_dict(torch.load('/content/drive/MyDrive/CV_Project/model_weights.pth'))
+model.load_state_dict(torch.load('./model_weights.pth'))
 model.eval()
 test_loss = 0
 correct_predictions = 0
