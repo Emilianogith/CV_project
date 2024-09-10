@@ -9,7 +9,14 @@ Moreover, we examine the utilization of the Pedestrian Intention Estimation JAAD
 In this work, we propose a streamlined implementation of a pedestrian intention estimation model. Our approach is inspired by the foundational work presented in [this paper](https://arxiv.org/pdf/2104.05485), but introduces a lighter version capable of efficiently processing a reduced datasets, tailored to operate within the constraints of limited computational resources. To address challenges related to high data volumes, we present a simplified model that leverages hierarchical fusion to handle multi-modal inputs.
 
 The architecture we propose retains the overall structure of similar models, as illustrated below:
-![architecture](https://github.com/Emilianogith/CV_project/blob/main/images/hyerarchical_fusion.png)
+![architecture](https://github.com/Emilianogith/CV_project/blob/main/images/hierarchical_fusion.png)
 
 However, unlike the original, our implementation omits the use of global context, focusing instead on the fusion of key inputs for intention estimation.
+
+
+**keypoints** of the provided architecture:
+- After processing each input temporal sequence, an attention mechanism is applied to highlight important sequential features.
+- The fusion of inputs from different sources follows a hierarchical structure.
+- Finally, after the fusion of visual and non-visual branches, a final attention mechanism is applied, and the extracted features are passed to a fully connected (FC) layer that delivers the final binary prediction.
+
 
