@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from torchvision import models
+from torchvision import models, transforms
 
 """
     model with hyerarchical fusion between Visual and Non_visual branches,
@@ -62,6 +62,18 @@ class FinalAttentionModule(nn.Module):
         return attention_output
 
 
+# Transformation Module
+class TransformModule:
+    def __init__(self):
+        self.transform = transforms.Compose([
+            transforms.RandomHorizontalFlip(),  # Randomly flip images horizontally
+            transforms.RandomRotation(10)
+    
+        ])
+
+    def __call__(self, img):
+        return self.transform(img)
+    
 
 # Visual Feature Extraction (VGG19-based CNN)
 def build_cnn_module():
@@ -83,6 +95,7 @@ class VisualBranch(nn.Module):
         self.gru = nn.GRU(512, hidden_size, batch_first=True)
         self.attention = AttentionModule(hidden_size)
         self.avg_pool = nn.AvgPool2d(kernel_size=(14, 14))
+        self.transform_module = TransformModule()
 
     def forward(self, visual_input):
 
@@ -90,8 +103,9 @@ class VisualBranch(nn.Module):
         #print(visual_input.shape)
 
         # Reshape input to apply CNN on each frame: (batch_size * timesteps, C, H, W)
-        c_in = visual_input.reshape(batch_size * timesteps, C, H, W)
-        cnn_features = self.cnn(c_in)  # (batch_size * timesteps, features=512, 14, 14)
+        visual_input = visual_input.reshape(batch_size * timesteps, C, H, W)
+        visual_input = self.transform_module(visual_input) 
+        cnn_features = self.cnn(visual_input)  # (batch_size * timesteps, features=512, 14, 14)
 
         pooled_features = self.avg_pool(cnn_features)
         pooled_features = pooled_features.reshape(batch_size, timesteps, -1)  # Reshape back: (batch_size, timesteps, features)

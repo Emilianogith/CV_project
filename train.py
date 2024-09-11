@@ -13,7 +13,7 @@ from trainer import train_test_split
         Hyperparameters used:
         -epochs: 10
         -batch_size: 4
-        -lr: 0.000005
+        -lr: 0.00005
         -L2_regularization: 0.01
 
     Finally save the parameters in '/content/drive/MyDrive/CV_Project/model_weights.pth'
@@ -47,7 +47,7 @@ model = HybridFusionNetwork(visual_input_shape=(16, 3, 224, 224),
                             hidden_size=256).to(device)
 
 criterion = nn.BCELoss()
-optimizer = optim.Adam(model.parameters(), lr=0.000005, weight_decay=0.01)
+optimizer = optim.Adam(model.parameters(), lr=0.00005, weight_decay=0.01)
 
 
 num_epochs = 10

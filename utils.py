@@ -81,12 +81,13 @@ def enumerate_pos_idx(labels):
     print('positive labels:', pos )
     print('negative labels:', len(labels)-pos )
 
-def balance_dataset(local_context, pose, bbox, speed, labels, remove_n_samples=10):
-    local_context = np.array(local_context)
-    pose = np.array(pose)
-    bbox = np.array(bbox)
-    speed = np.array(speed)
-    labels = np.array(labels)
+def balance_data(data, remove_n_samples):
+
+    local_context = np.array(data['local_context'])
+    pose = np.array(data['pose'])
+    bbox = np.array(data['bbox'])
+    speed = np.array(data['speed'])
+    labels = np.array(data['labels'])
 
     negative_indices = np.where(labels == 0)[0]
 
@@ -102,7 +103,11 @@ def balance_dataset(local_context, pose, bbox, speed, labels, remove_n_samples=1
     speed = speed[keep_indices]
     labels = labels[keep_indices]
 
-    return local_context, pose, bbox, speed, labels
+    return {'local_context':local_context,
+            'pose':pose,
+            'bbox':bbox,
+            'speed':speed,
+            'labels':labels}
 
 
 def plot_losses(train_losses, val_losses, num_epochs):

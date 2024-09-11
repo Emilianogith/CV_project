@@ -3,6 +3,7 @@ from torch.utils.data import Dataset, random_split
 import random
 import pickle
 import numpy as np
+from utils import balance_data
 
 
 class CustomDataset(Dataset):
@@ -43,6 +44,7 @@ def train_test_split(checkpoint_path):
     with open(checkpoint_path, 'rb') as f:
         data = pickle.load(f)
 
+    data=balance_data(data, remove_n_samples=100)
     dataset=CustomDataset(data)
 
     # Split intotrain, validation and test
