@@ -50,7 +50,7 @@ Extract the pose and the organized dataset with the following command:
 ```
 python pose_extraction.py
 ```
-This will create a file `.pickle` in the working directory containing the data used for training.
+This will create a file `.pkl` in the working directory containing the data used for training.
 
 ## Train
 To train the model using the extracted dataset, execute:
